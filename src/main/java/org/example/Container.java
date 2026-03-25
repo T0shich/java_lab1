@@ -19,7 +19,7 @@ public class Container<T> {
         this.size = 0;
     }
 
-    void addLast(T value) {
+    public void addLast(T value) {
         Node<T> newNode = new Node<>(value);
         if (head == null) {
             head = newNode;
@@ -33,7 +33,7 @@ public class Container<T> {
         size++;
     }
 
-    void addFirst(T value) {
+    public void addFirst(T value) {
         Node<T> newNode = new Node<>(value);
         if (head == null) {
             head = newNode;
@@ -44,7 +44,7 @@ public class Container<T> {
         size++;
     }
 
-    void addByIndex(int index, T value) {
+    public void addByIndex(int index, T value) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Invalid index: " + index + ", Size: " + size);
         }
@@ -68,16 +68,16 @@ public class Container<T> {
         size++;
     }
 
-    void removeFirst() {
+    public void removeFirst() {
         if (!isEmpty()) {
             head = head.next;
             size--;
         }
     }
 
-    void removeLast(){
+    public void removeLast(){
         if (isEmpty()) {
-            return;
+            // Empty container, nothing to remove
         } else if (head.next == null) {
             head = null;
             size--;
@@ -91,7 +91,7 @@ public class Container<T> {
         }
     }
 
-    void removeByIndex(int index) {
+    public void removeByIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Invalid index: " + index);
         }
@@ -110,7 +110,7 @@ public class Container<T> {
         }
     }
 
-    int getSize(){
+    public int getSize(){
         return size;
     }
 
@@ -129,7 +129,7 @@ public class Container<T> {
         }
     }
 
-    boolean isEmpty(){
+    public boolean isEmpty(){
         return size == 0;
     }
 
@@ -139,18 +139,18 @@ public class Container<T> {
             return "[]";
         }
 
-        String s = "[";
+        StringBuilder sb = new StringBuilder("[");
         Node<T> current = head;
 
         while (current != null) {
-            s = s + current.value;
+            sb.append(current.value);
             if (current.next != null) {
-                s = s + ", ";
+                sb.append(", ");
             }
             current = current.next;
         }
 
-        s = s + "]";
-        return s;
+        sb.append("]");
+        return sb.toString();
     }
 }
