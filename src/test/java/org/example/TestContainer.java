@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TestContainer {
 
+    // Проверяет добавление в начало и корректный доступ к элементам по индексам.
     @Test
     void testAddFirstAndGetByIndex() {
         Container<Integer> container = new Container<>();
@@ -16,6 +17,7 @@ class TestContainer {
         assertEquals(2, container.getSize());
     }
 
+    // Проверяет добавление в конец и корректный порядок элементов.
     @Test
     void testAddLastAndGetByIndex() {
         Container<Integer> container = new Container<>();
@@ -27,6 +29,7 @@ class TestContainer {
         assertEquals(2, container.getSize());
     }
 
+    // Проверяет вставку по индексу в середину контейнера.
     @Test
     void testAddByIndex() {
         Container<Integer> container = new Container<>();
@@ -40,6 +43,7 @@ class TestContainer {
         assertEquals(3, container.getSize());
     }
 
+    // Проверяет вставку по индексу в начало контейнера.
     @Test
     void testAddByIndexAtStart() {
         Container<Integer> container = new Container<>();
@@ -51,6 +55,7 @@ class TestContainer {
         assertEquals(2, container.getSize());
     }
 
+    // Проверяет, что при неверном индексе вставка выбрасывает исключение.
     @Test
     void testAddByIndexOutOfBounds() {
         Container<Integer> container = new Container<>();
@@ -60,6 +65,7 @@ class TestContainer {
         assertThrows(IndexOutOfBoundsException.class, () -> container.addByIndex(-1, 20));
     }
 
+    // Проверяет удаление первого элемента и сдвиг оставшихся элементов.
     @Test
     void testRemoveFirst() {
         Container<Integer> container = new Container<>();
@@ -74,6 +80,7 @@ class TestContainer {
         assertEquals(2, container.getSize());
     }
 
+    // Проверяет удаление последнего элемента контейнера.
     @Test
     void testRemoveLast() {
         Container<Integer> container = new Container<>();
@@ -88,6 +95,7 @@ class TestContainer {
         assertEquals(2, container.getSize());
     }
 
+    // Проверяет удаление элемента по индексу из середины контейнера.
     @Test
     void testRemoveByIndex() {
         Container<Integer> container = new Container<>();
@@ -102,6 +110,7 @@ class TestContainer {
         assertEquals(2, container.getSize());
     }
 
+    // Проверяет, что при неверном индексе удаление выбрасывает исключение.
     @Test
     void testRemoveByIndexOutOfBounds() {
         Container<Integer> container = new Container<>();
@@ -111,6 +120,7 @@ class TestContainer {
         assertThrows(IndexOutOfBoundsException.class, () -> container.removeByIndex(-1));
     }
 
+    // Проверяет корректную работу признака пустого контейнера.
     @Test
     void testIsEmpty() {
         Container<Integer> container = new Container<>();
@@ -124,6 +134,7 @@ class TestContainer {
         assertTrue(container.isEmpty());
     }
 
+    // Проверяет изменение размера контейнера после операций добавления и удаления.
     @Test
     void testGetSize() {
         Container<Integer> container = new Container<>();
@@ -138,6 +149,7 @@ class TestContainer {
         assertEquals(1, container.getSize());
     }
 
+    // Проверяет строковое представление для пустого и заполненного контейнера.
     @Test
     void testToString() {
         Container<Integer> container = new Container<>();
@@ -151,6 +163,7 @@ class TestContainer {
         assertEquals("[10, 20, 30]", container.toString());
     }
 
+    // Проверяет, что доступ по неверному индексу выбрасывает исключение.
     @Test
     void testGetByIndexOutOfBounds() {
         Container<Integer> container = new Container<>();
@@ -160,6 +173,7 @@ class TestContainer {
         assertThrows(IndexOutOfBoundsException.class, () -> container.getByIndex(-1));
     }
 
+    // Проверяет удаление первого элемента из пустого контейнера.
     @Test
     void testRemoveFirstEmpty() {
         Container<Integer> container = new Container<>();
@@ -170,6 +184,7 @@ class TestContainer {
         assertEquals(0, container.getSize());
     }
 
+    // Проверяет удаление последнего элемента из пустого контейнера.
     @Test
     void testRemoveLastEmpty() {
         Container<Integer> container = new Container<>();
@@ -180,6 +195,7 @@ class TestContainer {
         assertEquals(0, container.getSize());
     }
 
+    // Проверяет удаление единственного элемента в контейнере.
     @Test
     void testRemoveSingleElement() {
         Container<Integer> container = new Container<>();
@@ -191,6 +207,7 @@ class TestContainer {
         assertEquals(0, container.getSize());
     }
 
+    // Проверяет работу контейнера с обобщенным типом String.
     @Test
     void testGenericType() {
         Container<String> stringContainer = new Container<>();

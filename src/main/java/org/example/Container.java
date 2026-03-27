@@ -5,6 +5,7 @@ public class Container<T> {
         T value;
         Node<T> next;
 
+        // Создает узел списка и сохраняет переданное значение.
         public Node(T value) {
             this.value = value;
             this.next = null;
@@ -14,11 +15,13 @@ public class Container<T> {
     private Node<T> head;
     private int size;
 
+    // Инициализирует пустой контейнер без элементов.
     public Container() {
         this.head = null;
         this.size = 0;
     }
 
+    // Добавляет элемент в конец контейнера.
     public void addLast(T value) {
         Node<T> newNode = new Node<>(value);
         if (head == null) {
@@ -33,6 +36,7 @@ public class Container<T> {
         size++;
     }
 
+    // Добавляет элемент в начало контейнера.
     public void addFirst(T value) {
         Node<T> newNode = new Node<>(value);
         if (head == null) {
@@ -44,6 +48,7 @@ public class Container<T> {
         size++;
     }
 
+    // Вставляет элемент по указанному индексу, сдвигая последующие элементы вправо.
     public void addByIndex(int index, T value) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Invalid index: " + index + ", Size: " + size);
@@ -68,6 +73,7 @@ public class Container<T> {
         size++;
     }
 
+    // Удаляет первый элемент контейнера, если он существует.
     public void removeFirst() {
         if (!isEmpty()) {
             head = head.next;
@@ -75,6 +81,7 @@ public class Container<T> {
         }
     }
 
+    // Удаляет последний элемент контейнера, если он существует.
     public void removeLast(){
         if (isEmpty()) {
             // Empty container, nothing to remove
@@ -91,6 +98,7 @@ public class Container<T> {
         }
     }
 
+    // Удаляет элемент по указанному индексу.
     public void removeByIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Invalid index: " + index);
@@ -110,10 +118,12 @@ public class Container<T> {
         }
     }
 
+    // Возвращает текущее количество элементов в контейнере.
     public int getSize(){
         return size;
     }
 
+    // Возвращает элемент по указанному индексу.
     public T getByIndex(int index) {
         if (index >= 0 && index < size) {
             Node<T> temp = head;
@@ -129,10 +139,12 @@ public class Container<T> {
         }
     }
 
+    // Проверяет, пуст ли контейнер.
     public boolean isEmpty(){
         return size == 0;
     }
 
+    // Формирует строковое представление контейнера в формате списка.
     @Override
     public String toString() {
         if (isEmpty()) {
